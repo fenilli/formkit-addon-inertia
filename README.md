@@ -5,9 +5,11 @@ A plugin for integrating [FormKit's](https://github.com/formkit/formkit) and [In
 ## Improvements
 
 - [ ] Add a playground with inertia for easy testing and implementing new features
+- [ ] Add formkit typescript types to the plugin parameter
 - [ ] Make sure that only the formkit node is changed when inertia makes a visit
 - [ ] Add progress state to formkit so it can be tracked and used if needed
 - [ ] Remove the event when the node is also removed
+- [ ] Add automatic backend form validation and reseting fields when input is changed
 - [ ] Add cancelable visits when possible via schema or function
 
 ## Installation
