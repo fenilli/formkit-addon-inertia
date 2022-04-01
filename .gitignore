@@ -44,6 +44,9 @@ jspm_packages/
 # TypeScript v1 declaration files
 typings/
 
+# Parcel cache
+.parcel-cache
+
 # TypeScript cache
 *.tsbuildinfo
 
