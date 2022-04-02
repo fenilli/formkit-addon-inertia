@@ -8,11 +8,15 @@ export default class TodosController {
     return inertia.render('Playground', { todos });
   }
 
-  public async create({ inertia, request }: HttpContextContract) {
+  public async create({ request, response }: HttpContextContract) {
     await Todo.create(request.all());
 
-    const todos = await Todo.all();
+    return response.redirect('/todos');
+  }
 
-    return inertia.render('Playground', { todos });
+  public async delete({ response }: HttpContextContract) {
+    await Todo.query().delete();
+
+    return response.redirect('/todos');
   }
 }

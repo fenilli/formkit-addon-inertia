@@ -19,14 +19,14 @@ const config = {
 
 ## Usages
 
-This plugins uses the inertia hooks to add to the formkit node the states like loading and disabled.
+This plugins uses the inertia callback functions to add to the formkit node the states like loading and disabled.
 
 ```js
 <FormKit
     type="form"
     submit-label="Login"
-    // Now when you call any inertia visit it adds to formkit node the states like loading and disabled
-    @submit="(fields) => $inertia.post($route('yourRouter'), fields)"
+    // Now when you call inertia visit passing the new inertiaOptions it adds to formkit node the states like loading and disabled
+    @submit="(fields, _, inertiaOptions) => $inertia.post($route('yourRouter'), fields, inertiaOptions)"
 >
     <FormKit type="email" name="email" label="E-mail" />
     <FormKit type="password" name="password" label="Password" />
@@ -44,7 +44,7 @@ This plugins uses the inertia hooks to add to the formkit node the states like l
 ## Improvements
 
 - [ ] Add formkit typescript types to the plugin parameter
-- [ ] Make sure that only that formkit node is changed when inertia makes a visit
+- [x] Make sure that only that formkit node is changed when inertia makes a visit
 - [ ] Remove inertia event when the node is also removed
 
 ## Changelog

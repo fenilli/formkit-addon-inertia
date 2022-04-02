@@ -1,11 +1,16 @@
 {
   "private": true,
   "scripts": {
-    "dev": "npm run build && npm run dev --workspace=playground",
-    "build": "npm run build --workspace=inertiajs-formkit-plugin"
+    "dev": "concurrently --kill-others \"npm run dev:lib\" \"npm run dev:playground\"",
+    "dev:lib": "npm run dev --workspace=inertiajs-formkit-plugin",
+    "dev:playground": "npm run dev --workspace=playground",
+    "build:lib": "npm run build --workspace=inertiajs-formkit-plugin"
   },
   "workspaces": [
     "packages\\lib",
     "packages\\playground"
-  ]
+  ],
+  "devDependencies": {
+    "concurrently": "^7.1.0"
+  }
 }

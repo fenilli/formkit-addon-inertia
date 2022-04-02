@@ -1,6 +1,6 @@
 {
   "name": "inertiajs-formkit-plugin",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A plugin for integrating FormKit's and InertiaJS.",
   "source": "src/index.ts",
   "main": "dist/main.js",
@@ -12,6 +12,7 @@
     "LICENSE"
   ],
   "scripts": {
+    "dev": "parcel watch",
     "build": "parcel build",
     "publish": "npx -y rimraf dist && npm run build"
   },

@@ -20,7 +20,8 @@
 
 import Route from '@ioc:Adonis/Core/Route';
 
-Route.on('/').redirect('/todo');
+Route.on('/').redirect('/todos');
 
-Route.get('/todo', 'TodosController.index');
-Route.post('/todo', 'TodosController.create');
+Route.get('/todos', 'TodosController.index');
+Route.post('/add-todo', 'TodosController.create');
+Route.delete('/delete-todos', 'TodosController.delete');

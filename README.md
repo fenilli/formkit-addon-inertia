@@ -19,8 +19,8 @@ const config = {
 <FormKit
     type="form"
     submit-label="Login"
-    // Now when you call any inertia visit it adds to formkit node the states like loading and disabled
-    @submit="(fields) => $inertia.post('/login', fields)"
+    // Now when you call inertia visit passing the new inertiaOptions it adds to formkit node the states like loading and disabled
+    @submit="(fields, _, inertiaOptions) => $inertia.post($route('yourRouter'), fields, inertiaOptions)"
 >
     <FormKit type="email" name="email" label="E-mail" />
     <FormKit type="password" name="password" label="Password" />
