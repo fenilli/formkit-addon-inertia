@@ -28,3 +28,9 @@ const config = {
 ```
 
 For more information about the plugin check out the plugin's [README](https://github.com/gustavofenilli/inertiajs-formkit-plugin/blob/main/packages/lib/README.md)
+
+## Contributing
+
+Any contribution is welcomed, be it an issue found, a feature you would like to see, to any pull request you wish to make.
+
+[ [Checkout how to do it](https://github.com/GustavoFenilli/inertiajs-formkit-plugin/blob/main/CONTRIBUTING.md) ]
