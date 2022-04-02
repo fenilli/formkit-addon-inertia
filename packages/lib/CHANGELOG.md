@@ -1,5 +1,11 @@
 # Changelog
 
+### 1.1.0
+
+#### Features
+
+* Added a third parameter `inertiaOptions` to FormKit form `@submit`.
+
 ### 1.0.0
 
 #### Features
