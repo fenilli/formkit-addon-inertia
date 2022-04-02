@@ -3,6 +3,7 @@ node_modules/
 
 # parcel-bundler cache (https://parceljs.org/)
 .parcel-cache
+dist
 
 # Optional npm cache directory
 .npm
