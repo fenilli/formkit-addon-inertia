@@ -2,9 +2,9 @@
   "private": true,
   "scripts": {
     "dev": "concurrently --kill-others \"npm run dev:lib\" \"npm run dev:playground\"",
-    "dev:lib": "npm run dev --workspace=inertiajs-formkit-plugin",
+    "dev:lib": "npm run dev --workspace=formkit-inertify",
     "dev:playground": "npm run dev --workspace=playground",
-    "build:lib": "npm run build --workspace=inertiajs-formkit-plugin"
+    "publish": "npm publish --workspace=formkit-inertify"
   },
   "workspaces": [
     "packages\\lib",

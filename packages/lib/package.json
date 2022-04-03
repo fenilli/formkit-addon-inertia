@@ -1,7 +1,7 @@
 {
-  "name": "inertiajs-formkit-plugin",
-  "version": "1.1.0",
-  "description": "A plugin for integrating FormKit's and InertiaJS.",
+  "name": "formkit-inertify",
+  "version": "2.0.0-alpha.1",
+  "description": "A plugin for integrating InertiaJS with FormKit",
   "source": "src/index.ts",
   "main": "dist/main.js",
   "module": "dist/module.js",
@@ -17,6 +17,7 @@
     "publish": "npx -y rimraf dist && npm run build"
   },
   "keywords": [
+    "inertia",
     "inertiajs",
     "formkit",
     "formkit-plugin"
@@ -25,12 +26,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/GustavoFenilli/inertiajs-formkit-plugin.git"
+    "url": "git+https://github.com/GustavoFenilli/formkit-inertify.git"
   },
   "bugs": {
-    "url": "https://github.com/GustavoFenilli/inertiajs-formkit-plugin/issues"
+    "url": "https://github.com/GustavoFenilli/formkit-inertify/issues"
   },
-  "homepage": "https://github.com/GustavoFenilli/inertiajs-formkit-plugin#readme",
+  "homepage": "https://github.com/GustavoFenilli/formkit-inertify#readme",
   "devDependencies": {
     "@parcel/packager-ts": "^2.4.1",
     "@parcel/transformer-typescript-types": "^2.4.1",
