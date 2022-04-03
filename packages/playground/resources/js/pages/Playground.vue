@@ -2,7 +2,7 @@
   <FormKit
     type="form"
     submit-label="Add todo"
-    @submit="(fields, _, inertiaOptions) => $inertia.post('/add-todo', fields, inertiaOptions)"
+    @submit="(fields, node) => node.context.inertia.post('/add-todo', fields)"
   >
     <h1>Add Todo</h1>
     <FormKit type="text" name="title" label="Title" validation="required" />
@@ -10,10 +10,10 @@
 
   <FormKit
     type="form"
-    submit-label="Add todo"
-    @submit="(fields) => $inertia.post('/add-todo', fields)"
+    submit-label="Add todo too"
+    @submit="(fields, node) => node.context.inertia.post('/add-todo', fields)"
   >
-    <h1>Add Todo</h1>
+    <h1>Add Todo Too</h1>
     <FormKit type="text" name="title" label="Title" validation="required" />
   </FormKit>
 
@@ -21,11 +21,7 @@
     <li v-for="todo in todos">{{ todo.title }}</li>
   </ul>
 
-  <FormKit
-    type="button"
-    @click="(_, inertiaOptions) => $inertia.delete('/delete-todos', {}, inertiaOptions)"
-    label="Delete All"
-  />
+  <FormKit type="button" @click="$inertia.delete('/delete-todos')" label="Delete All" />
 </template>
 
 <script setup>

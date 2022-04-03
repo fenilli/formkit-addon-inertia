@@ -1,12 +1,12 @@
 # Changelog
 
-### 1.1.0
+### 1.1.0 [DEPRECATED](https://www.npmjs.com/package/inertiajs-formkit-plugin)
 
 #### Features
 
 * Added a third parameter `inertiaOptions` to FormKit form `@submit`.
 
-### 1.0.0
+### 1.0.0 [DEPRECATED](https://www.npmjs.com/package/inertiajs-formkit-plugin)
 
 #### Features
 

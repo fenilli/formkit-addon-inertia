@@ -1,6 +1,6 @@
 # InertiaJS Formkit Plugin
 
-A plugin for integrating [FormKit](https://github.com/formkit/formkit) and [InertiaJS](https://inertiajs.com/).
+A plugin for integrating [InertiaJS](https://inertiajs.com/) with [FormKit](https://github.com/formkit/formkit).
 
 ## Installation
 
