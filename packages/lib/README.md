@@ -1,32 +1,32 @@
-# InertiaJS Formkit Plugin
+# FormKit Inertify
 
 A plugin for integrating [InertiaJS](https://inertiajs.com/) with [FormKit](https://github.com/formkit/formkit).
 
 ## Installation
 
 ```bash
-npm i inertiajs-formkit-plugin
+npm i formkit-inertify
 ```
 
 ```ts
-import inertiaFormkitPlugin from 'inertiajs-formkit-plugin'
+import formkitInertify from 'formkit-inertify';
 
 // formkit.config.js
 const config = {
-    plugins: [inertiaFormkitPlugin]
+    plugins: [formkitInertify]
 }
 ```
 
-## Usages
+## How to use
 
-This plugins uses the inertia callback functions to add to the formkit node the states like loading and disabled.
+This plugins adds to formkit's context an inertia property to be used for visits adding visit callbacks to change formkit's state.
 
-```js
+```html
+<!-- You can use the new inertia property inside the context to make inertia visits -->
 <FormKit
     type="form"
     submit-label="Login"
-    // Now when you call inertia visit passing the new inertiaOptions it adds to formkit node the states like loading and disabled
-    @submit="(fields, _, inertiaOptions) => $inertia.post($route('yourRouter'), fields, inertiaOptions)"
+    @submit="(fields, node) => node.context.inertia.post('/login', fields)"
 >
     <FormKit type="email" name="email" label="E-mail" />
     <FormKit type="password" name="password" label="Password" />
@@ -43,10 +43,9 @@ This plugins uses the inertia callback functions to add to the formkit node the 
 
 ## Improvements
 
-- [ ] Add formkit typescript types to the plugin parameter
+- [x] Add formkit and inertia typescript types to the plugin
 - [x] Make sure that only that formkit node is changed when inertia makes a visit
-- [ ] Remove inertia event when the node is also removed
 
 ## Changelog
 
-You can check any version change and its commits by the [changelog](https://github.com/gustavofenilli/inertiajs-formkit-plugin/blob/main/packages/lib/CHANGELOG.md)
+You can check any version change and its commits by the [changelog](https://github.com/gustavofenilli/formkit-inertify/blob/main/packages/lib/CHANGELOG.md)
