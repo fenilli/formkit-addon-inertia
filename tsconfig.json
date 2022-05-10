@@ -32,7 +32,6 @@
       "@adonisjs/session",
       "@adonisjs/view",
       "@adonisjs/shield",
-      "@japa/preset-adonis/build/adonis-typings",
       "@eidellev/inertia-adonisjs"
     ]
   }
