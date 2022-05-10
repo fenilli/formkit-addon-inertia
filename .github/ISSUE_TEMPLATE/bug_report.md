@@ -4,7 +4,6 @@ about: Create a report to help us improve
 title: ''
 labels: bug
 assignees: GustavoFenilli
-
 ---
 
 **Describe the bug**
@@ -24,6 +23,6 @@ A clear and concise description of what you expected to happen.
 If applicable, add screenshots to help explain your problem.
 
 **Versions (please complete the following information):**
- - FormKit: [e.g. 1.0.0-beta.6]
+ - FormKit: [e.g. 1.0.0-beta.8]
  - InertiaJS: [e.g. 0.11.0]
- - inertiajs-formkit-plugin: [1.0.0]
+ - formkit-inertify: [2.0.0-alpha.1]

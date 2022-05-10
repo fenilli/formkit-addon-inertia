@@ -1,16 +1,59 @@
 {
+  "name": "formkit-inertify",
+  "version": "2.0.0-alpha.2",
+  "description": "A plugin for integrating InertiaJS with FormKit",
   "private": true,
   "scripts": {
-    "dev": "concurrently --kill-others \"npm run dev:lib\" \"npm run dev:playground\"",
-    "dev:lib": "npm run dev --workspace=formkit-inertify",
-    "dev:playground": "npm run dev --workspace=playground",
-    "publish": "npm publish --workspace=formkit-inertify"
+    "dev": "node ace serve --watch",
+    "build": "node ace build --production",
+    "start": "node server.js"
   },
-  "workspaces": [
-    "packages\\lib",
-    "packages\\playground"
+  "keywords": [
+    "inertia",
+    "inertiajs",
+    "formkit",
+    "formkit-plugin"
   ],
+  "author": "Gustavo Fenilli <gustavofenilli@gmail.com> (https://github.com/gustavofenilli)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GustavoFenilli/formkit-inertify.git"
+  },
+  "bugs": {
+    "url": "https://github.com/GustavoFenilli/formkit-inertify/issues"
+  },
+  "homepage": "https://github.com/GustavoFenilli/formkit-inertify#readme",
   "devDependencies": {
-    "concurrently": "^7.1.0"
+    "@adonisjs/assembler": "^5.6.2",
+    "@adonisjs/core": "^5.7.6",
+    "@adonisjs/repl": "^3.1.10",
+    "@adonisjs/session": "^6.2.2",
+    "@adonisjs/shield": "^7.0.10",
+    "@adonisjs/view": "^6.1.4",
+    "@eidellev/inertia-adonisjs": "^6.2.0",
+    "@formkit/themes": "^1.0.0-beta.8",
+    "@formkit/vue": "^1.0.0-beta.8",
+    "@inertiajs/inertia": "^0.11.0",
+    "@inertiajs/inertia-vue3": "^0.6.0",
+    "@inertiajs/progress": "^0.2.7",
+    "@japa/preset-adonis": "^1.0.15",
+    "@japa/runner": "^2.0.7",
+    "@symfony/webpack-encore": "^2.1.0",
+    "@vue/compiler-sfc": "^3.2.33",
+    "adonis-preset-ts": "^2.1.0",
+    "pino-pretty": "^7.6.1",
+    "proxy-addr": "^2.0.7",
+    "reflect-metadata": "^0.1.13",
+    "source-map-support": "^0.5.21",
+    "typescript": "~4.6",
+    "vue": "^3.2.33",
+    "vue-loader": "^17.0.0",
+    "youch": "^3.2.0",
+    "youch-terminal": "^2.1.3"
+  },
+  "peerDependencies": {
+    "@formkit/core": ">= 1.0.0-beta.8",
+    "@inertiajs/inertia": ">= 0.11.0"
   }
 }
