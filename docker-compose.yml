@@ -9,9 +9,9 @@ services:
       target: dependencies
     ports:
       - ${PORT}:${PORT}
-      - 9229:9229
+      - ${ENCORE_PORT}:${ENCORE_PORT}
     env_file:
       - .env
     volumes:
       - ./:/home/node/app
-    command: dumb-init node ace serve --watch
+    command: node ace serve --watch --encore-args="--host ${HOST} --port ${ENCORE_PORT}"
