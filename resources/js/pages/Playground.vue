@@ -1,3 +1,6 @@
 <template>
-  <h1>Alo</h1>
+  <FormKit type="form">
+    <FormKit type="text" label="E-mail" validation="required|email" />
+    <FormKit type="password" label="Password" validation="required" autocomplete />
+  </FormKit>
 </template>
