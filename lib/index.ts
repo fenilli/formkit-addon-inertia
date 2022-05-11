@@ -1,6 +1,6 @@
-import { Inertia, VisitOptions, PendingVisit, ActiveVisit } from '@inertiajs/inertia';
+import { Inertia, VisitOptions } from '@inertiajs/inertia';
 
-import { onStart, onFinish } from './events';
+import extendInertiaEventCallbacks from './events';
 
 import { FormKitContext } from "@formkit/core";
 
@@ -9,11 +9,16 @@ export default (node: FormKitContext) => {
 
   const mergeOptions = (options?: VisitOptions) => ({
     ...options,
-    onStart: (visit: PendingVisit) => onStart(node, visit, options?.onStart),
-    onFinish: (visit: ActiveVisit) => onFinish(node, visit, options?.onFinish)
+    ...extendInertiaEventCallbacks(node, options)
   });
 
   node.context.inertia = {
-    post: (href, data, options?) => Inertia.post(href, data, mergeOptions(options))
+    visit: (href, options?) => Inertia.visit(href, mergeOptions(options)),
+    reload: (options?) => Inertia.reload(mergeOptions(options)),
+    get: (href, data?, options?) => Inertia.get(href, data, mergeOptions(options)),
+    post: (href, data?, options?) => Inertia.post(href, data, mergeOptions(options)),
+    put: (href, data?, options?) => Inertia.put(href, data, mergeOptions(options)),
+    patch: (href, data?, options?) => Inertia.patch(href, data, mergeOptions(options)),
+    delete: (href, options?) => Inertia.delete(href, mergeOptions(options)),
   };
 }
