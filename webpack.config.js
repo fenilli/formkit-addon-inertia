@@ -1,5 +1,6 @@
 const { join } = require('path')
 const Encore = require('@symfony/webpack-encore')
+const path = require('path')
 
 /*
 |--------------------------------------------------------------------------
@@ -46,6 +47,9 @@ Encore.setPublicPath('/assets')
 |
 */
 Encore.addEntry('app', './resources/js/app.ts');
+
+// Formkit Inertify entrypoint for output
+// Encore.addEntry('formkit-inertify', './lib/index.ts');
 
 /*
 |--------------------------------------------------------------------------
@@ -174,6 +178,16 @@ Encore.configureDevServerOptions((options) => {
 
 /*
 |--------------------------------------------------------------------------
+| Enable Typescript loader
+|--------------------------------------------------------------------------
+|
+| Uncomment the following line of code to enable support for Typescript.
+|
+*/
+Encore.enableTypeScriptLoader()
+
+/*
+|--------------------------------------------------------------------------
 | Enable Vue loader
 |--------------------------------------------------------------------------
 |
@@ -202,6 +216,9 @@ config.infrastructureLogging = {
   level: 'warn',
 }
 config.stats = 'errors-warnings'
+config.resolve.alias = {
+  'lib': path.resolve(__dirname, './lib')
+}
 
 /*
 |--------------------------------------------------------------------------
