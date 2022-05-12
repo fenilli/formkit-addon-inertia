@@ -21,7 +21,9 @@
 import Route from '@ioc:Adonis/Core/Route'
 import { schema, rules } from '@ioc:Adonis/Core/Validator'
 
-Route.get('/', async ({ inertia }) => {
+Route.on('/').redirect('/login');
+
+Route.get('/login', async ({ inertia }) => {
   return inertia.render('Playground')
 })
 
