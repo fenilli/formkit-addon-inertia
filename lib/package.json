@@ -1,19 +1,17 @@
 {
   "name": "formkit-inertify",
-  "version": "2.0.0-alpha.2",
+  "version": "2.0.0-alpha.3",
   "description": "A plugin for integrating InertiaJS with FormKit",
   "source": "index.ts",
   "main": "dist/main.js",
   "module": "dist/module.js",
   "types": "dist/types.d.ts",
   "files": [
-    "dist",
-    "../README.md",
-    "../LICENSE"
+    "dist"
   ],
   "scripts": {
     "build": "npx -y rimraf dist && parcel build",
-    "publish": "npm run build && npm publish"
+    "publish": "npm run build"
   },
   "keywords": [
     "inertia",

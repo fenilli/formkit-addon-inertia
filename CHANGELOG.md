@@ -1,5 +1,11 @@
 # Changelog
 
+### 2.0.0-alpha.3
+
+#### Bug Fixes
+
+* Fixed README and LICENSE not being outputed to npm
+
 ### 2.0.0-alpha.2
 
 #### Features
