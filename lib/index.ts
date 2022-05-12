@@ -3,6 +3,7 @@ import { Inertia, VisitOptions } from '@inertiajs/inertia';
 import extendInertiaEventCallbacks from './events';
 
 import { FormKitNode } from "@formkit/core";
+import { FormKitInertiaContext } from './types';
 
 export default (node: FormKitNode) => {
   if (node.props.type !== 'form' || !node.context) return;
@@ -12,7 +13,7 @@ export default (node: FormKitNode) => {
     ...extendInertiaEventCallbacks(node, options)
   });
 
-  node.context.inertia = {
+  (node.context.inertia as FormKitInertiaContext) = {
     visit: (href, options?) => Inertia.visit(href, mergeOptions(options)),
     reload: (options?) => Inertia.reload(mergeOptions(options)),
     get: (href, data?, options?) => Inertia.get(href, data, mergeOptions(options)),

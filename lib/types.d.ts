@@ -9,3 +9,9 @@ export interface FormKitInertiaContext {
   patch: (href: string | URL, data?: RequestPayload, options?: Exclude<VisitOptions, 'method' | 'data'>) => void;
   delete: (href: string | URL, options?: Exclude<VisitOptions, 'method'>) => void;
 }
+
+declare module '@formkit/core' {
+  export interface FormKitFrameworkContext {
+    inertia: FormKitInertiaContext;
+  }
+}
