@@ -37,18 +37,12 @@ This plugins adds to formkit's context an inertia property to be used for visits
 
 - [x] Loading state when submiting
 - [x] Disabled state when submiting
-- [ ] Progress percentage added to the state
-- [ ] Cancel visits function via schema and node
-- [ ] Set and remove backend validation errors automaticaly
-
-## Improvements
-
-- [x] Add formkit and inertia typescript types to the plugin
-- [x] Make sure that only that formkit node is changed when inertia makes a visit
+- [x] Progress percentage added to the state
+- [x] Set and remove backend validation errors automaticaly
 
 ## Changelog
 
-You can check any version change and its commits by the [changelog](https://github.com/gustavofenilli/formkit-inertify/blob/main/packages/lib/CHANGELOG.md)
+You can check any version change and its commits by the [changelog](https://github.com/gustavofenilli/formkit-inertify/blob/main/CHANGELOG.md)
 
 ## Contributing
 

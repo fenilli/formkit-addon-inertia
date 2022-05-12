@@ -1,29 +1,8 @@
 {
-  "name": "formkit-inertify",
-  "version": "2.0.0-alpha.2",
-  "description": "A plugin for integrating InertiaJS with FormKit",
   "private": true,
   "scripts": {
-    "dev": "node ace serve --watch",
-    "build": "node ace build --production",
-    "start": "node server.js"
+    "dev": "node ace serve --watch"
   },
-  "keywords": [
-    "inertia",
-    "inertiajs",
-    "formkit",
-    "formkit-plugin"
-  ],
-  "author": "Gustavo Fenilli <gustavofenilli@gmail.com> (https://github.com/gustavofenilli)",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/GustavoFenilli/formkit-inertify.git"
-  },
-  "bugs": {
-    "url": "https://github.com/GustavoFenilli/formkit-inertify/issues"
-  },
-  "homepage": "https://github.com/GustavoFenilli/formkit-inertify#readme",
   "devDependencies": {
     "@adonisjs/assembler": "^5.6.2",
     "@adonisjs/core": "^5.7.6",
@@ -50,9 +29,5 @@
     "vue-loader": "^17.0.0",
     "youch": "^3.2.0",
     "youch-terminal": "^2.1.3"
-  },
-  "peerDependencies": {
-    "@formkit/core": ">= 1.0.0-beta.8",
-    "@inertiajs/inertia": ">= 0.11.0"
   }
 }

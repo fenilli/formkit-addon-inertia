@@ -1,0 +1,19 @@
+{
+  "include": [
+    "**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ],
+  "compilerOptions": {
+    "lib": [
+      "DOM",
+      "ES2015"
+    ],
+    "jsx": "preserve",
+    "outDir": "dist",
+    "rootDir": "./",
+    "declaration": true,
+  }
+}
