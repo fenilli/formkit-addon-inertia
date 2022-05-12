@@ -4,7 +4,7 @@ Any contribution is welcomed, be it an issue found, a feature you would like to 
 
 * [Bug Report](https://github.com/GustavoFenilli/formkit-inertify/issues/new?assignees=GustavoFenilli&labels=bug&template=bug_report.md)
 * [Feature Request](https://github.com/GustavoFenilli/formkit-inertify/discussions/new?category=ideas)
-* [Pull Request](https://github.com/GustavoFenilli/formkit-inertify#setup-local)
+* [Pull Request](https://github.com/GustavoFenilli/formkit-inertify/blob/main/CONTRIBUTING.md#setup-local)
 
 ## Setup Local
 
