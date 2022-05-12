@@ -2,9 +2,9 @@ import { Inertia, VisitOptions } from '@inertiajs/inertia';
 
 import extendInertiaEventCallbacks from './events';
 
-import { FormKitContext } from "@formkit/core";
+import { FormKitNode } from "@formkit/core";
 
-export default (node: FormKitContext) => {
+export default (node: FormKitNode) => {
   if (node.props.type !== 'form' || !node.context) return;
 
   const mergeOptions = (options?: VisitOptions) => ({

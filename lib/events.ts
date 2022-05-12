@@ -1,5 +1,5 @@
-import { VisitOptions, PendingVisit, Progress, ActiveVisit } from '@inertiajs/inertia';
-import { createMessage, FormKitContext } from "@formkit/core";
+import { VisitOptions, PendingVisit, Progress, ActiveVisit, Errors } from '@inertiajs/inertia';
+import { createMessage, FormKitNode } from "@formkit/core";
 
 const loadingMessage = createMessage({
   key: 'loading',
@@ -7,7 +7,7 @@ const loadingMessage = createMessage({
   value: true
 });
 
-const onStart = (node: FormKitContext, payload: any, callback?: Function) => {
+const onStart = (node: FormKitNode, payload: any, callback?: Function) => {
   // Set the loading and disabled state
   node.store.set(loadingMessage);
   node.props.disabled = true;
@@ -15,7 +15,7 @@ const onStart = (node: FormKitContext, payload: any, callback?: Function) => {
   callback?.(payload, node);
 };
 
-const onProgress = (node: FormKitContext, payload: any, callback?: Function) => {
+const onProgress = (node: FormKitNode, payload: any, callback?: Function) => {
   // Set the data-progress attrs to the progress number
   if (node.context) node.context.attrs = {
     'data-progress': payload
@@ -24,7 +24,7 @@ const onProgress = (node: FormKitContext, payload: any, callback?: Function) => 
   callback?.(payload, node);
 };
 
-const onFinish = (node: FormKitContext, payload: any, callback?: Function) => {
+const onFinish = (node: FormKitNode, payload: any, callback?: Function) => {
   // Remove the loading and disabled state
   node.store.remove('loading');
   node.props.disabled = false;
@@ -35,8 +35,16 @@ const onFinish = (node: FormKitContext, payload: any, callback?: Function) => {
   callback?.(payload, node);
 };
 
-export default (node: FormKitContext, options?: VisitOptions) => ({
+const onError = (node: FormKitNode, payload: any, callback?: Function) => {
+  // Set backend validation errors to all the fields available to the form by name
+  node.setErrors([], payload);
+
+  callback?.(payload, node);
+};
+
+export default (node: FormKitNode, options?: VisitOptions) => ({
   onStart: (visit: PendingVisit) => onStart(node, visit, options?.onStart),
   onProgress: (progress: Progress) => onProgress(node, progress, options?.onProgress),
-  onFinish: (visit: ActiveVisit) => onFinish(node, visit, options?.onFinish)
+  onFinish: (visit: ActiveVisit) => onFinish(node, visit, options?.onFinish),
+  onError: (erros: Errors) => onError(node, erros, options?.onError)
 });
