@@ -10,14 +10,11 @@ Any contribution is welcomed, be it an issue found, a feature you would like to 
 
 If you wish to make a pull request, you can test out your feature by following these steps.
 
-1. Install [postgresql](https://www.postgresql.org/)
-2. Install [node](https://nodejs.org/en/)
-3. Clone this [repository](https://github.com/GustavoFenilli/formkit-inertify)
-4. Enter the folder `packages/playground`
-5. Rename the file `.env.example` to `.env`
-6. Make sure your postgresql information is correct inside the `.env`
-7. Run `node ace migration:run`
-8. Go back to the root folder
-9. Run `npm install`
-10. Run `npm dev`
-11. Enter `packages/lib` make the changes you want, commit and send us a PR
+1. Install [docker](https://docs.docker.com/get-docker/)
+2. Clone this [repository](https://github.com/GustavoFenilli/formkit-inertify)
+3. Rename the file `.env.example` to `.env`
+4. Run `docker run -it --rm --user="node" -v "$PWD":/usr/src/app -w /usr/src/app node:16 npm install`
+5. Run `docker compose up -d`
+6. Create a branch with the correct name ( like feature/magic or fix/dumb-error )
+
+And that is it! quite simple right? now you can make your changes and send a PR.
