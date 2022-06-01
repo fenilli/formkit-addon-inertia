@@ -1,6 +1,6 @@
 {
   "name": "formkit-inertify",
-  "version": "2.0.0-alpha.3",
+  "version": "2.0.0-alpha.4",
   "description": "A plugin for integrating InertiaJS with FormKit",
   "source": "index.ts",
   "main": "dist/main.js",
