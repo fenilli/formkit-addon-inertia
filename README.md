@@ -33,6 +33,8 @@ This plugins adds to formkit's context an inertia property to be used for visits
 </FormKit>
 ```
 
+You can learn more about it at the [documentation](https://github.com/gustavofenilli/formkit-inertify/blob/main/lib/README.md)
+
 ## Functionalities
 
 - [x] Loading state when submiting

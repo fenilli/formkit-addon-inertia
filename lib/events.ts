@@ -1,5 +1,6 @@
-import { VisitOptions, PendingVisit, Progress, ActiveVisit, Errors } from '@inertiajs/inertia';
+import { PendingVisit, VisitOptions } from '@inertiajs/inertia';
 import { createMessage, FormKitNode } from "@formkit/core";
+import { FormKitInertifyVisitOptions } from './types';
 
 const loadingMessage = createMessage({
   key: 'loading',
@@ -7,44 +8,57 @@ const loadingMessage = createMessage({
   value: true
 });
 
-const onStart = (node: FormKitNode, payload: any, callback?: Function) => {
+const onExtendedCb = (node: FormKitNode, payload: any, cb?: Function) => {
+  if (cb) cb(payload, node);
+};
+
+const onStart = (node: FormKitNode, payload: any, cb?: Function) => {
+  if (cb) return cb(payload, node);
+
   // Set the loading and disabled state
   node.store.set(loadingMessage);
   node.props.disabled = true;
-
-  callback?.(payload, node);
 };
 
-const onProgress = (node: FormKitNode, payload: any, callback?: Function) => {
+const onProgress = (node: FormKitNode, payload: any, cb?: Function) => {
+  if (cb) return cb(payload, node);
+
   // Set the data-progress attrs to the progress number
   if (node.context) node.context.attrs = {
     'data-progress': payload
   };
-
-  callback?.(payload, node);
 };
 
-const onFinish = (node: FormKitNode, payload: any, callback?: Function) => {
+const onFinish = (node: FormKitNode, payload: any, cb?: Function) => {
+  if (cb) return cb(payload, node);
   // Remove the loading and disabled state
   node.store.remove('loading');
   node.props.disabled = false;
 
   // Remove the data-progress attrs when finished
   if (node.context && node.context.attrs['data-progress']) delete node.context.attrs['data-progress'];
-
-  callback?.(payload, node);
 };
 
-const onError = (node: FormKitNode, payload: any, callback?: Function) => {
+const onError = (node: FormKitNode, payload: any, cb?: Function) => {
+  if (cb) return cb(payload, node);
   // Set backend validation errors to all the fields available to the form by name
   node.setErrors([], payload);
-
-  callback?.(payload, node);
 };
 
-export default (node: FormKitNode, options?: VisitOptions) => ({
-  onStart: (visit: PendingVisit) => onStart(node, visit, options?.onStart),
-  onProgress: (progress: Progress) => onProgress(node, progress, options?.onProgress),
-  onFinish: (visit: ActiveVisit) => onFinish(node, visit, options?.onFinish),
-  onError: (erros: Errors) => onError(node, erros, options?.onError)
+const pluckVisitOptions = (options?: FormKitInertifyVisitOptions) => {
+  const { method, data, replace, preserveScroll, preserveState, only, headers, errorBag, forceFormData, queryStringArrayFormat } = options;
+
+  return { method, data, replace, preserveScroll, preserveState, only, headers, errorBag, forceFormData, queryStringArrayFormat };
+};
+
+export default (node: FormKitNode, options?: FormKitInertifyVisitOptions): VisitOptions => ({
+  ...pluckVisitOptions(options),
+  onCancelToken: ({ cancel }) => onExtendedCb(node, { cancel }, options?.onCancelToken),
+  onBefore: (visit) => onExtendedCb(node, visit, options?.onBefore),
+  onStart: (visit) => onStart(node, visit, options?.onStart),
+  onProgress: (progress) => onProgress(node, progress, options?.onProgress),
+  onFinish: (visit) => onFinish(node, visit, options?.onFinish),
+  onCancel: () => onExtendedCb(node, undefined, options?.onCancel),
+  onSuccess: (page) => onExtendedCb(node, page, options?.onSuccess),
+  onError: (error) => onError(node, error, options?.onError),
 });

@@ -1,5 +1,15 @@
 # Changelog
 
+### 2.0.0-alpha.4
+
+#### Features
+
+* Added FormKit's node as the second parameter to all inertia event callbacks.
+
+#### BREAKING CHANGE
+
+* Changed event callbacks to replace functionality instead of running after.
+
 ### 2.0.0-alpha.3
 
 #### Bug Fixes
