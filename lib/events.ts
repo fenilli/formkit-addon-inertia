@@ -1,4 +1,4 @@
-import { PendingVisit, VisitOptions } from '@inertiajs/inertia';
+import { VisitOptions } from '@inertiajs/inertia';
 import { createMessage, FormKitNode } from "@formkit/core";
 import { FormKitInertifyVisitOptions } from './types';
 
@@ -46,9 +46,13 @@ const onError = (node: FormKitNode, payload: any, cb?: Function) => {
 };
 
 const pluckVisitOptions = (options?: FormKitInertifyVisitOptions) => {
-  const { method, data, replace, preserveScroll, preserveState, only, headers, errorBag, forceFormData, queryStringArrayFormat } = options;
+  if (options) {
+    const { method, data, replace, preserveScroll, preserveState, only, headers, errorBag, forceFormData, queryStringArrayFormat } = options;
 
-  return { method, data, replace, preserveScroll, preserveState, only, headers, errorBag, forceFormData, queryStringArrayFormat };
+    return { method, data, replace, preserveScroll, preserveState, only, headers, errorBag, forceFormData, queryStringArrayFormat };
+  }
+
+  return {};
 };
 
 export default (node: FormKitNode, options?: FormKitInertifyVisitOptions): VisitOptions => ({
