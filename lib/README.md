@@ -35,9 +35,7 @@ This plugins adds to formkit's context an inertia property to be used for visits
 
 ## Inertia options
 
-You can pass any inertia of inertia options it will be passed down to inertia, event callbacks also get the node as the second parameter as a bonus.
-
-> Event callbacks replace the automatic functionality of formkit-inertify ( we use onStart, onProgress, onFinish, onError ), you can still use them, just make sure to write the functionality back if you need.
+You can pass any of inertia options to it, event callbacks also get the node as the second parameter as a bonus.
 
 ```html
 <!-- You can pass any inertia property and events callback to it -->
@@ -45,6 +43,21 @@ You can pass any inertia of inertia options it will be passed down to inertia, e
     type="form"
     submit-label="Login"
     @submit="(fields, node) => node.context.inertia.post('/login', fields, { onBefore: (visit, node) => { console.log(visit, node); }})"
+>
+    <FormKit type="email" name="email" label="E-mail" />
+    <FormKit type="password" name="password" label="Password" />
+</FormKit>
+```
+
+## Disable inertify behaviour
+
+If you want to disable the default behaviour of inertify at a given event you can by setting its disable callback name to false.
+
+```html
+<FormKit
+    type="form"
+    submit-label="Login"
+    @submit="(fields, node) => node.context.inertia.post('/login', fields, { onBefore: (visit, node) => { console.log(visit, node); }, disable: { onError: false } })"
 >
     <FormKit type="email" name="email" label="E-mail" />
     <FormKit type="password" name="password" label="Password" />

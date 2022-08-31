@@ -1,5 +1,19 @@
 # Changelog
 
+### 2.0.0-alpha-5
+
+#### Features
+
+* Added new disable property at options, where you can use it to disable inertify behaviour by specifying its callback name (onStart, onProgress, onFinish, onError) and setting it to false.
+
+#### Bug Fixes
+
+* Fixes event callsbacks not being called when passing options to inertia as per [issue #3](https://github.com/GustavoFenilli/formkit-inertify/issues/3).
+
+#### BREAKING CHANGE
+
+* Event callbacks do not replace anymore default behaviour of inertify.
+
 ### 2.0.0-alpha.4
 
 #### Features
