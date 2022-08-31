@@ -15,8 +15,7 @@
   "scripts": {
     "build": "npx -y rimraf dist && parcel build",
     "generate-ts": "cp types.d.ts ./dist/types.d.ts",
-    "prepack": "npm run build",
-    "postpack": "npm run generate-ts"
+    "prepack": "npm run build && npm run generate-ts"
   },
   "keywords": [
     "inertia",
