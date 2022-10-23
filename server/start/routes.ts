@@ -20,10 +20,10 @@
 
 import Route from '@ioc:Adonis/Core/Route'
 
-Route.get('/', async ({ inertia }) => {
-  return inertia.render('Context')
-})
+Route.get('/', 'AddonsController.index')
 
-Route.get('/composition', async ({ inertia }) => {
-  return inertia.render('Composition')
-})
+Route.get('/context', 'AddonsController.context')
+Route.post('/context', 'AddonsController.contextStore')
+
+Route.get('/composition', 'AddonsController.composition')
+Route.post('/composition', 'AddonsController.compositionStore')
