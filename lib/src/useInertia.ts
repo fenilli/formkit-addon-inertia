@@ -1,4 +1,4 @@
-import { Inertia, Visit, Progress, Page, Errors, VisitOptions, PendingVisit, ActiveVisit, RequestPayload, Method } from '@inertiajs/inertia'
+import { Inertia, Visit, Progress, Page, Errors, VisitOptions, PendingVisit, ActiveVisit, RequestPayload } from '@inertiajs/inertia'
 import { createMessage, FormKitNode } from '@formkit/core';
 
 export interface FormKitAddonInertiaDisableOptions {
@@ -53,13 +53,13 @@ const injectNode = (
     if (!options?.disableLoading) node.store.set(loadingMessage);
     if (!options?.disableDisabled) node.props.disabled = true;
 
-    if (options?.onStart) return options.onStart(visit, node);
+    if (options?.onStart) options.onStart(visit, node);
   };
 
   addonOptions.onProgress = (progress) => {
     if (!options?.disableProgress && node.context) node.context.attrs = { 'data-progress': progress?.total };
 
-    if (options?.onProgress) return options.onProgress(progress, node);
+    if (options?.onProgress) options.onProgress(progress, node);
   };
 
   addonOptions.onFinish = (visit) => {
@@ -67,21 +67,21 @@ const injectNode = (
     if (!options?.disableDisabled) node.props.disabled = false;
     if (!options?.disableProgress && node.context && node.context.attrs['data-progress']) delete node.context.attrs['data-progress'];
 
-    if (options?.onFinish) return options.onFinish(visit, node);
+    if (options?.onFinish) options.onFinish(visit, node);
   };
 
   addonOptions.onCancel = () => {
-    if (options?.onCancel) return options.onCancel(node);
+    if (options?.onCancel) options.onCancel(node);
   };
 
   addonOptions.onSuccess = (page) => {
-    if (options?.onSuccess) return options.onSuccess(page, node);
+    if (options?.onSuccess) options.onSuccess(page, node);
   };
 
   addonOptions.onError = (errors) => {
-    if (!options?.disableErrors) node.setErrors([], errors);
-
     if (options?.onError) return options.onError(errors, node);
+
+    if (!options?.disableErrors) node.setErrors([], errors);
   };
 
   return addonOptions;
