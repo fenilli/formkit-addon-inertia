@@ -1,45 +1,25 @@
 {
-  "name": "formkit-inertify",
-  "version": "2.0.0-alpha.5",
-  "description": "A plugin for integrating InertiaJS with FormKit",
-  "source": "index.ts",
-  "main": "dist/main.js",
-  "module": "dist/module.js",
-  "targets": {
-    "types": false
-  },
-  "types": "dist/types.d.ts",
+  "name": "formkit-addon-inertia",
+  "version": "1.0.0",
+  "description": "A plugin for integrating InertiaJS with FormKit.",
   "files": [
     "dist"
   ],
-  "scripts": {
-    "build": "npx -y rimraf dist && parcel build",
-    "generate-ts": "cp types.d.ts ./dist/types.d.ts",
-    "prepack": "npm run build && npm run generate-ts"
-  },
   "keywords": [
-    "inertia",
     "inertiajs",
     "formkit",
-    "formkit-plugin"
+    "addon"
   ],
   "author": "Gustavo Fenilli <gustavofenilli@gmail.com> (https://github.com/gustavofenilli)",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/GustavoFenilli/formkit-inertify.git"
+    "url": "git+https://github.com/GustavoFenilli/formkit-addon-inertia.git"
   },
   "bugs": {
-    "url": "https://github.com/GustavoFenilli/formkit-inertify/issues"
+    "url": "https://github.com/GustavoFenilli/formkit-addon-inertia/issues"
   },
-  "homepage": "https://github.com/GustavoFenilli/formkit-inertify#readme",
-  "devDependencies": {
-    "@parcel/packager-ts": "latest",
-    "@parcel/transformer-typescript-types": "latest",
-    "parcel": "latest",
-    "process": "^0.11.10",
-    "typescript": "4.7.4"
-  },
+  "homepage": "https://github.com/GustavoFenilli/formkit-addon-inertia#readme",
   "peerDependencies": {
     "@formkit/core": ">= 1.0.0-beta.10",
     "@inertiajs/inertia": ">= 0.11.0"
