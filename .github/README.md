@@ -115,7 +115,7 @@ All contributions are welcomed and appreciated!
 - You can always star it!
 - Any bug you found can be reported by opening an [issue](https://github.com/GustavoFenilli/formkit-addon-inertia/issues/new?assignees=GustavoFenilli&labels=bug)
 - If you have any cool ideas or features you want to be added just open a [discussion](https://github.com/GustavoFenilli/formkit-addon-inertia/discussions/new?category=ideas) about it
-- You can make pull request with fixes or features, read out the [contributing guide](https://github.com/GustavoFenilli/formkit-addon-inertia/blob/main/CONTRIBUTING.md) to get started
+- You can make pull request with fixes or features, read out the [contributing guide](https://github.com/GustavoFenilli/formkit-addon-inertia/blob/main/.github/CONTRIBUTING.md) to get started
 
 ## License
 
