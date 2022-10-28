@@ -1,6 +1,6 @@
 # FormKit Addon Inertia
 
-Plugin for integrating <a href="https://inertiajs.com/">InertiaJS</a> with <a href="https://github.com/formkit/formkit">FormKit</a>
+Plugin for integrating <a href="https://inertiajs.com/">InertiaJS</a> with <a href="https://formkit.com/">FormKit</a>
 
 ## Table of contents
 
