@@ -1,53 +1,111 @@
-# FormKit Inertify
+# FormKit Addon Inertia
 
-A plugin for integrating [InertiaJS](https://inertiajs.com/) with [FormKit](https://github.com/formkit/formkit).
+Plugin for integrating <a href="https://inertiajs.com/">InertiaJS</a> with <a href="https://github.com/formkit/formkit">FormKit</a>
 
-## Installation
+## Table of contents
+
+- 🚀 [Getting Started](#getting-started)
+- 🛠 [Options](#options)
+- 👏 [Contributing](#contributing)
+- 📝 [License](#license)
+
+## Getting Started
+
+There are two ways to use this addon, firstly there is the composable way, and there is also a formkit plugin.
+
+> In the end, the plugin uses the composable inside of it with the correct form node for easy of use.
 
 ```bash
-npm i formkit-inertify
+npm i formkit-addon-inertia
 ```
 
-```ts
-import formkitInertify from 'formkit-inertify';
+### 1. Composable
 
-// formkit.config.js
-const config = {
-    plugins: [formkitInertify]
-}
-```
-
-## How to use
-
-This plugins adds to formkit's context an inertia property to be used for visits adding visit callbacks to change formkit's state.
+The `useInertia` is a function that receives a `FormKit` node and returns all Inertia HTTP methods.
+Those are `visit`, `get`, `post`, `put`, `patch`, `delete` and `reload`.
 
 ```html
-<!-- You can use the new inertia property inside the context to make inertia visits -->
-<FormKit
+<script setup>
+  import { useInertia } from "formkit-addon-inertia";
+</script>
+
+<template>
+  <FormKit
     type="form"
-    submit-label="Login"
-    @submit="(fields, node) => node.context.inertia.post('/login', fields)"
->
+    @submit="(fields, node) => useInertia(node).post('/user', fields)"
+  >
+    <FormKit type="text" name="name" label="Name" />
     <FormKit type="email" name="email" label="E-mail" />
-    <FormKit type="password" name="password" label="Password" />
-</FormKit>
+  </FormKit>
+</template>
 ```
 
-You can learn more about it at the [documentation](https://github.com/gustavofenilli/formkit-inertify/blob/main/lib/README.md)
+### 2. Plugin
 
-## Functionalities
+The `inertia` context property has all Inertia HTTP methods.
+Those are `visit`, `get`, `post`, `put`, `patch`, `delete` and `reload`.
 
-- [x] Loading state when submiting
-- [x] Disabled state when submiting
-- [x] Progress percentage added to the state
-- [x] Set and remove backend validation errors automaticaly
+```html
+<script setup>
+  import inertiaPlugin from "formkit-addon-inertia";
+</script>
 
-## Changelog
+<template>
+  <FormKit
+    type="form"
+    :plugins="[inertiaPlugin]"
+    @submit="(fields, node) => node.context.inertia.post('/user', fields)"
+  >
+    <FormKit type="text" name="name" label="Name" />
+    <FormKit type="email" name="email" label="E-mail" />
+  </FormKit>
+</template>
+```
 
-You can check any version change and its commits by the [changelog](https://github.com/gustavofenilli/formkit-inertify/blob/main/CHANGELOG.md)
+> You can add this plugin as a global formkit plugin so every form has it, instead of defining manually like the example above
+>
+> ```js
+> import { createApp } from "vue";
+> import App from "App.vue";
+> import { plugin, defaultConfig } from "@formkit/vue";
+> import inertiaPlugin from "formkit-addon-inertia";
+>
+> createApp(App)
+>   .use(plugin, defaultConfig({ plugins: [inertiaPlugin] }))
+>   .mount("#app");
+> ```
+
+## Options
+
+You can use all of InertiaJS [callbacks](https://inertiajs.com/manual-visits#event-callbacks) and we add the node as the last argument for easy integration of your features.
+
+> We by default add some features inside inertia's callbacks to make the use smoother.
+>
+> There are four features, loading message, disabled prop, progress data attribute and automatic field errors.
+> You can disable any of these by passing any of these properties to the options.
+>
+> { disableLoading: true, disableDisabled: true, disableProgress: true, disableErrors: true }
+
+```html
+<template>
+  <FormKit
+    type="form"
+    @submit="(fields, node) => node.context.inertia.post('/user', fields, { onSuccess: (page, node) => /* do your stuff here */, disableProgress: true })"
+  >
+    <FormKit type="text" name="name" label="Name" />
+    <FormKit type="email" name="email" label="E-mail" />
+  </FormKit>
+</template>
+```
 
 ## Contributing
 
-Any contribution is welcomed, be it an issue found, a feature you would like to see, to any pull request you wish to make.
+All contributions are welcomed and appreciated!
 
-[ [Checkout how to do it](https://github.com/GustavoFenilli/formkit-inertify/blob/main/CONTRIBUTING.md) ]
+- You can always star it!
+- You can make pull request with fixes or features
+- Read out the [contributing guide](https://github.com/GustavoFenilli/formkit-addon-inertia/blob/main/CONTRIBUTING.md) to get started.
+
+## License
+
+[MIT](https://github.com/GustavoFenilli/formkit-addon-inertia/blob/main/LICENSE)
