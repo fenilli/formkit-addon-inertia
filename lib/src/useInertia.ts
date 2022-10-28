@@ -79,10 +79,7 @@ const injectNode = (
   };
 
   addonOptions.onError = (errors) => {
-    if (!options?.disableErrors) {
-      console.log(errors);
-      node.setErrors([], errors);
-    };
+    if (!options?.disableErrors) node.setErrors([], errors);
 
     if (options?.onError) return options.onError(errors, node);
   };
@@ -93,11 +90,11 @@ const injectNode = (
 export const useInertia = (formNode: FormKitNode) => {
   return {
     visit: (url: URL, options?: FormKitAddonInertiaOptions) => Inertia.visit(url, injectNode(formNode, options)),
-    get: (url: URL | string, data?: RequestPayload, options?: Exclude<FormKitAddonInertiaOptions, 'method' | 'data'>) => Inertia.visit(url, { method: Method.GET, data, ...injectNode(formNode, options) }),
-    post: (url: URL | string, data?: RequestPayload, options?: Exclude<FormKitAddonInertiaOptions, 'method' | 'data'>) => Inertia.visit(url, { method: Method.POST, data, ...injectNode(formNode, options) }),
-    put: (url: URL | string, data?: RequestPayload, options?: Exclude<FormKitAddonInertiaOptions, 'method' | 'data'>) => Inertia.visit(url, { method: Method.PUT, data, ...injectNode(formNode, options) }),
-    patch: (url: URL | string, data?: RequestPayload, options?: Exclude<FormKitAddonInertiaOptions, 'method' | 'data'>) => Inertia.visit(url, { method: Method.PATCH, data, ...injectNode(formNode, options) }),
-    delete: (url: URL | string, options?: Exclude<FormKitAddonInertiaOptions, 'method'>) => Inertia.visit(url, { method: Method.DELETE, ...injectNode(formNode, options) }),
+    get: (url: URL | string, data?: RequestPayload, options?: Exclude<FormKitAddonInertiaOptions, 'method' | 'data'>) => Inertia.get(url, data, injectNode(formNode, options)),
+    post: (url: URL | string, data?: RequestPayload, options?: Exclude<FormKitAddonInertiaOptions, 'method' | 'data'>) => Inertia.post(url, data, injectNode(formNode, options)),
+    put: (url: URL | string, data?: RequestPayload, options?: Exclude<FormKitAddonInertiaOptions, 'method' | 'data'>) => Inertia.put(url, data, injectNode(formNode, options)),
+    patch: (url: URL | string, data?: RequestPayload, options?: Exclude<FormKitAddonInertiaOptions, 'method' | 'data'>) => Inertia.patch(url, data, injectNode(formNode, options)),
+    delete: (url: URL | string, options?: Exclude<FormKitAddonInertiaOptions, 'method'>) => Inertia.delete(url, injectNode(formNode, options)),
     reload: (options?: Exclude<FormKitAddonInertiaOptions, 'preserveScroll' | 'preserveState'>) => Inertia.reload(injectNode(formNode, options)),
   };
 };
