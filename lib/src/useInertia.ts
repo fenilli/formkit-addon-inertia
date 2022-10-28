@@ -42,24 +42,24 @@ const injectNode = (
   const addonOptions: VisitOptions = {};
 
   addonOptions.onCancelToken = ({ cancel }) => {
-    if (options?.onCancelToken) options.onCancelToken(cancel, node);
+    if (options?.onCancelToken) return options.onCancelToken(cancel, node);
   };
 
   addonOptions.onBefore = (visit) => {
-    if (options?.onBefore) options.onBefore(visit, node);
+    if (options?.onBefore) return options.onBefore(visit, node);
   };
 
   addonOptions.onStart = (visit) => {
     if (!options?.disableLoading) node.store.set(loadingMessage);
     if (!options?.disableDisabled) node.props.disabled = true;
 
-    if (options?.onStart) options.onStart(visit, node);
+    if (options?.onStart) return options.onStart(visit, node);
   };
 
   addonOptions.onProgress = (progress) => {
     if (!options?.disableProgress && node.context) node.context.attrs = { 'data-progress': progress?.total };
 
-    if (options?.onProgress) options.onProgress(progress, node);
+    if (options?.onProgress) return options.onProgress(progress, node);
   };
 
   addonOptions.onFinish = (visit) => {
@@ -67,21 +67,21 @@ const injectNode = (
     if (!options?.disableDisabled) node.props.disabled = false;
     if (!options?.disableProgress && node.context && node.context.attrs['data-progress']) delete node.context.attrs['data-progress'];
 
-    if (options?.onFinish) options.onFinish(visit, node);
+    if (options?.onFinish) return options.onFinish(visit, node);
   };
 
   addonOptions.onCancel = () => {
-    if (options?.onCancel) options.onCancel(node);
+    if (options?.onCancel) return options.onCancel(node);
   };
 
   addonOptions.onSuccess = (page) => {
-    if (options?.onSuccess) options.onSuccess(page, node);
+    if (options?.onSuccess) return options.onSuccess(page, node);
   };
 
   addonOptions.onError = (errors) => {
     if (!options?.disableErrors) node.setErrors([], errors);
 
-    if (options?.onError) options.onError(errors, node);
+    if (options?.onError) return options.onError(errors, node);
   };
 
   return addonOptions;
