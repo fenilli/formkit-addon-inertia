@@ -20,6 +20,7 @@
 
 import Route from '@ioc:Adonis/Core/Route'
 
-Route.get('/', 'UsersController.index')
+Route.on('/').redirect('/users')
+Route.get('/users', 'UsersController.index')
 
-Route.post('/user', 'UsersController.store')
+Route.post('/users', 'UsersController.store')

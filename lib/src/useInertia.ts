@@ -79,7 +79,10 @@ const injectNode = (
   };
 
   addonOptions.onError = (errors) => {
-    if (!options?.disableErrors) node.setErrors([], errors);
+    if (!options?.disableErrors) {
+      console.log(errors);
+      node.setErrors([], errors);
+    };
 
     if (options?.onError) return options.onError(errors, node);
   };
