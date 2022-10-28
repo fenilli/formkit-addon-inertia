@@ -8,12 +8,8 @@ const toastOnSuccess = (page) => {
   toast.success(page.props.success);
 };
 
-const setError = (errors, node) => {
-  console.log(errors);
-};
-
 const submit = (fields, node) => {
-  useInertia(node).post('/users', fields, { onSuccess: toastOnSuccess, onError: setError });
+  useInertia(node).post('/users', fields, { onSuccess: toastOnSuccess });
 };
 </script>
 
