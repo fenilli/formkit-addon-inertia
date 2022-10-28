@@ -11,3 +11,5 @@ export default (node: FormKitNode) => {
 
   if (node.context) node.context.inertia = useInertia(node);
 };
+
+export { useInertia };
