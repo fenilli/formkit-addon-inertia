@@ -20,10 +20,6 @@
 
 import Route from '@ioc:Adonis/Core/Route'
 
-Route.get('/', 'AddonsController.index')
+Route.get('/', 'UsersController.index')
 
-Route.get('/context', 'AddonsController.context')
-Route.post('/context', 'AddonsController.contextStore')
-
-Route.get('/composition', 'AddonsController.composition')
-Route.post('/composition', 'AddonsController.compositionStore')
+Route.post('/user', 'UsersController.store')
