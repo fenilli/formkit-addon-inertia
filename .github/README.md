@@ -87,11 +87,21 @@ You can use all of InertiaJS [callbacks](https://inertiajs.com/manual-visits#eve
 > { disableLoading: true, disableDisabled: true, disableProgress: true, disableErrors: true }
 
 ```html
+<script setup>
+  const onSuccess = (page, node) => {
+    // Do any onSuccess logic here
+  };
+
+  const submit = (fields, node) => {
+    node.context.inertia.post("/user", fields, {
+      onSuccess,
+      disableProgress: true,
+    });
+  };
+</script>
+
 <template>
-  <FormKit
-    type="form"
-    @submit="(fields, node) => node.context.inertia.post('/user', fields, { onSuccess: (page, node) => /* do your stuff here */, disableProgress: true })"
-  >
+  <FormKit type="form" @submit="submit">
     <FormKit type="text" name="name" label="Name" />
     <FormKit type="email" name="email" label="E-mail" />
   </FormKit>
@@ -103,8 +113,9 @@ You can use all of InertiaJS [callbacks](https://inertiajs.com/manual-visits#eve
 All contributions are welcomed and appreciated!
 
 - You can always star it!
-- You can make pull request with fixes or features
-- Read out the [contributing guide](https://github.com/GustavoFenilli/formkit-addon-inertia/blob/main/CONTRIBUTING.md) to get started.
+- Any bug you found can be reported by opening an [issue](https://github.com/GustavoFenilli/formkit-addon-inertia/issues/new?assignees=GustavoFenilli&labels=bug)
+- If you have any cool ideas or features you want to be added just open a [discussion](https://github.com/GustavoFenilli/formkit-addon-inertia/discussions/new?category=ideas) about it
+- You can make pull request with fixes or features, read out the [contributing guide](https://github.com/GustavoFenilli/formkit-addon-inertia/blob/main/CONTRIBUTING.md) to get started
 
 ## License
 
