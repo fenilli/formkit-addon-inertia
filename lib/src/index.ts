@@ -6,7 +6,7 @@ declare module '@formkit/core' {
   }
 };
 
-export default (node: FormKitNode) => {
+export const plugin = (node: FormKitNode) => {
   if (node.props.type !== 'form' || !node.context) return false;
 
   if (node.context) node.context.inertia = useInertia(node);

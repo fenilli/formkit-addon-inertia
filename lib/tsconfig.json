@@ -1,9 +1,14 @@
 {
   "extends": "../tsconfig.json",
-  "include": ["src/**/*"],
+  "include": ["**/*"],
+  "exclude": ["node_modules", "dist"],
   "compilerOptions": {
-    "outDir": "build",
+    "strict": true,
+    "outDir": "dist",
     "rootDir": "./src",
-    "sourceMap": true
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "esModuleInterop": true
   }
 }

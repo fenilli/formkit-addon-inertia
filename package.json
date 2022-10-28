@@ -7,6 +7,7 @@
   "scripts": {
     "server:dev": "npm run dev --workspace=server",
     "server:ace": "npm run ace --workspace=server",
+    "lib:dev": "npm run dev --workspace=lib",
     "lib:build": "npm run build --workspace=lib"
   }
 }
