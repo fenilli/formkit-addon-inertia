@@ -1,6 +1,9 @@
 # FormKit Addon Inertia
 
-Plugin for integrating <a href="https://inertiajs.com/">InertiaJS</a> with <a href="https://formkit.com/">FormKit</a>
+Addon for integrating [InertiaJS](https://inertiajs.com/) with [FormKit](https://formkit.com/)
+
+- 🇺🇸 [English](./README.md)
+- 🇧🇷 [Português](./README.pt_BR.md)
 
 ## Table of contents
 
@@ -11,7 +14,7 @@ Plugin for integrating <a href="https://inertiajs.com/">InertiaJS</a> with <a hr
 
 ## Getting Started
 
-There are two ways to use this addon, firstly there is the composable way, and there is also a formkit plugin.
+There are two ways to use this addon, firstly there is the composition way, and there is also a formkit plugin.
 
 > In the end, the plugin uses the composable inside of it with the correct form node for easy of use.
 
@@ -19,7 +22,7 @@ There are two ways to use this addon, firstly there is the composable way, and t
 npm i formkit-addon-inertia
 ```
 
-### 1. Composable
+### 1. Composition
 
 The `useInertia` is a function that receives a `FormKit` node and returns all Inertia HTTP methods.
 Those are `visit`, `get`, `post`, `put`, `patch`, `delete` and `reload`.
@@ -32,7 +35,7 @@ Those are `visit`, `get`, `post`, `put`, `patch`, `delete` and `reload`.
 <template>
   <FormKit
     type="form"
-    @submit="(fields, node) => useInertia(node).post('/user', fields)"
+    @submit="(fields, node) => useInertia(node).post('/users', fields)"
   >
     <FormKit type="text" name="name" label="Name" />
     <FormKit type="email" name="email" label="E-mail" />
@@ -54,7 +57,7 @@ Those are `visit`, `get`, `post`, `put`, `patch`, `delete` and `reload`.
   <FormKit
     type="form"
     :plugins="[inertiaPlugin]"
-    @submit="(fields, node) => node.context.inertia.post('/user', fields)"
+    @submit="(fields, node) => node.context.inertia.post('/users', fields)"
   >
     <FormKit type="text" name="name" label="Name" />
     <FormKit type="email" name="email" label="E-mail" />
@@ -77,9 +80,9 @@ Those are `visit`, `get`, `post`, `put`, `patch`, `delete` and `reload`.
 
 ## Options
 
-You can use all of InertiaJS [callbacks](https://inertiajs.com/manual-visits#event-callbacks) and we add the node as the last argument for easy integration of your features.
+You can use all of InertiaJS [callbacks](https://inertiajs.com/manual-visits#event-callbacks), and we add the FormKit node as the last argument for easy integration of your features.
 
-> We by default add some features inside inertia's callbacks to make the use smoother.
+> We by default add some features inside Inertia callbacks to make the use smoother.
 >
 > There are four features, loading message, disabled prop, progress data attribute and automatic field errors.
 > You can disable any of these by passing any of these properties to the options.
@@ -93,7 +96,7 @@ You can use all of InertiaJS [callbacks](https://inertiajs.com/manual-visits#eve
   };
 
   const submit = (fields, node) => {
-    node.context.inertia.post("/user", fields, {
+    node.context.inertia.post("/users", fields, {
       onSuccess,
       disableProgress: true,
     });
@@ -115,7 +118,7 @@ All contributions are welcomed and appreciated!
 - You can always star it!
 - Any bug you found can be reported by opening an [issue](https://github.com/GustavoFenilli/formkit-addon-inertia/issues/new?assignees=GustavoFenilli&labels=bug)
 - If you have any cool ideas or features you want to be added just open a [discussion](https://github.com/GustavoFenilli/formkit-addon-inertia/discussions/new?category=ideas) about it
-- You can make pull request with fixes or features, read out the [contributing guide](https://github.com/GustavoFenilli/formkit-addon-inertia/blob/main/.github/CONTRIBUTING.md) to get started
+- You can make pull request with fixes or features, read out the [contributing guide](./CONTRIBUTING.md) to get started
 
 ## License
 
