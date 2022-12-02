@@ -42,7 +42,7 @@ Those are `visit`, `get`, `post`, `put`, `patch`, `delete` and `reload`.
 
 ```html
 <script setup>
-  import inertiaPlugin from "formkit-addon-inertia";
+  import { plugin as inertiaPlugin } from "formkit-addon-inertia";
 </script>
 
 <template>
@@ -63,7 +63,7 @@ Those are `visit`, `get`, `post`, `put`, `patch`, `delete` and `reload`.
 > import { createApp } from "vue";
 > import App from "App.vue";
 > import { plugin, defaultConfig } from "@formkit/vue";
-> import inertiaPlugin from "formkit-addon-inertia";
+> import { plugin as inertiaPlugin } from "formkit-addon-inertia";
 >
 > createApp(App)
 >   .use(plugin, defaultConfig({ plugins: [inertiaPlugin] }))
