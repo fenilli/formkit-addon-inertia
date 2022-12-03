@@ -4,7 +4,7 @@
   "description": "A plugin for integrating InertiaJS with FormKit.",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
-  "types": "dist/index.d.ts",
+  "types": "index.d.ts",
   "scripts": {
     "build": "npx rimraf ./dist && rollup -c",
     "dev": "npx rimraf ./dist && rollup -c -w"
