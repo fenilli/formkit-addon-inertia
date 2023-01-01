@@ -84,8 +84,6 @@ const injectNode = (
     if (options?.onError) return options.onError(errors, node);
   };
 
-  console.log(mergedOptions);
-
   return mergedOptions;
 };
 
