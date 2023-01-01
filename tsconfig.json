@@ -8,7 +8,6 @@
     ],
     "noUnusedLocals": true,
     "skipLibCheck": true,
-    "incremental": true,
     "noUnusedParameters": true,
     "removeComments": true,
     "declaration": false,

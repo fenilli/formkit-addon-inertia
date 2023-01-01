@@ -39,7 +39,7 @@ const submit = (fields, node) => {
       type="form"
       @submit="
         (fields, node) =>
-          node?.context?.inertia.post('/users', fields, { onSuccess: toastOnSuccess })
+          node?.context?.inertia.post('/users', fields, { onSuccess: toastOnSuccess, preserveScroll: true })
       "
     >
       <FormKit type="text" name="name" label="Name" validation="required" />
