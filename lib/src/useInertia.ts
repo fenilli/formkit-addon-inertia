@@ -39,52 +39,54 @@ const injectNode = (
   node: FormKitNode,
   options?: FormKitAddonInertiaOptions
 ): VisitOptions => {
-  const addonOptions: VisitOptions = {};
+  const mergedOptions: VisitOptions = { ...options as VisitOptions };
 
-  addonOptions.onCancelToken = ({ cancel }) => {
-    if (options?.onCancelToken) return options.onCancelToken(cancel, node);
-  };
+  if (mergedOptions?.onCancelToken) {
+    mergedOptions.onCancelToken = ({ cancel }) => options?.onCancelToken?.(cancel, node);
+  }
 
-  addonOptions.onBefore = (visit) => {
-    if (options?.onBefore) return options.onBefore(visit, node);
-  };
+  if (mergedOptions?.onCancel) {
+    mergedOptions.onCancel = () => options?.onCancel?.(node);
+  }
 
-  addonOptions.onStart = (visit) => {
+  if (mergedOptions?.onSuccess) {
+    mergedOptions.onSuccess = (page) => options?.onSuccess?.(page, node);
+  }
+
+  if (mergedOptions?.onBefore) {
+    mergedOptions.onBefore = (visit) => options?.onBefore?.(visit, node);
+  }
+
+  mergedOptions.onStart = (visit) => {
     if (!options?.disableLoading) node.store.set(loadingMessage);
     if (!options?.disableDisabled) node.props.disabled = true;
 
-    if (options?.onStart) options.onStart(visit, node);
+    if (options?.onStart) return options.onStart(visit, node);
   };
 
-  addonOptions.onProgress = (progress) => {
+  mergedOptions.onProgress = (progress) => {
     if (!options?.disableProgress && node.context) node.context.attrs = { 'data-progress': progress?.total };
 
-    if (options?.onProgress) options.onProgress(progress, node);
+    if (options?.onProgress) return options.onProgress(progress, node);
   };
 
-  addonOptions.onFinish = (visit) => {
+  mergedOptions.onFinish = (visit) => {
     if (!options?.disableLoading) node.store.remove('loading');
     if (!options?.disableDisabled) node.props.disabled = false;
     if (!options?.disableProgress && node.context && node.context.attrs['data-progress']) delete node.context.attrs['data-progress'];
 
-    if (options?.onFinish) options.onFinish(visit, node);
+    if (options?.onFinish) return options.onFinish(visit, node);
   };
 
-  addonOptions.onCancel = () => {
-    if (options?.onCancel) options.onCancel(node);
-  };
-
-  addonOptions.onSuccess = (page) => {
-    if (options?.onSuccess) options.onSuccess(page, node);
-  };
-
-  addonOptions.onError = (errors) => {
-    if (options?.onError) return options.onError(errors, node);
-
+  mergedOptions.onError = (errors) => {
     if (!options?.disableErrors) node.setErrors([], errors);
+
+    if (options?.onError) return options.onError(errors, node);
   };
 
-  return addonOptions;
+  console.log(mergedOptions);
+
+  return mergedOptions;
 };
 
 export const useInertia = (formNode: FormKitNode) => {
