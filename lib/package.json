@@ -1,6 +1,6 @@
 {
   "name": "formkit-addon-inertia",
-  "version": "1.0.0-beta.2",
+  "version": "1.0.0-beta.3",
   "description": "A plugin for integrating InertiaJS with FormKit.",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -29,8 +29,8 @@
   },
   "homepage": "https://github.com/GustavoFenilli/formkit-addon-inertia#readme",
   "peerDependencies": {
-    "@formkit/core": ">= 1.0.0-beta.10",
-    "@inertiajs/vue3": "^1.0.0-beta.2"
+    "@formkit/core": "^0.16.0",
+    "@inertiajs/vue3": "^1.0.0"
   },
   "devDependencies": {
     "rollup": "^3.2.3",
