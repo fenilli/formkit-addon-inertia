@@ -1,6 +1,6 @@
 {
   "name": "formkit-addon-inertia",
-  "version": "1.0.0-beta.3",
+  "version": "1.0.0-beta.4",
   "description": "A plugin for integrating InertiaJS with FormKit.",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
