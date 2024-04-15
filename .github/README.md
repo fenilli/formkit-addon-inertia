@@ -1,3 +1,5 @@
+> This package has been moved to [@formkit/inertia](https://github.com/formkit/inertia) to maintain a first party integration with Inertia and FormKit, it comes with breaking changes, a better composable and an easier way to extend event callbacks.
+
 # FormKit Addon Inertia
 
 Addon for integrating [InertiaJS](https://inertiajs.com/) with [FormKit](https://formkit.com/)
